@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Correo Electrónico</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+        .editor-container { max-width: 600px; background: white; padding: 20px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); }
+        .toolbar button, .toolbar select { margin: 5px; padding: 5px 10px; }
+        .editor { border: 1px solid #ccc; min-height: 200px; padding: 10px; margin-top: 10px; }
+        .send-button { margin-top: 10px; padding: 10px 15px; background: #28a745; color: white; border: none; cursor: pointer; border-radius: 5px; }
+        .send-button:hover { background: #218838; }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="editor-container">
+        <h2>Redactar Correo</h2>
+        <div class="toolbar">
+            <button onclick="document.execCommand('bold')">Negrita</button>
+            <button onclick="document.execCommand('italic')">Cursiva</button>
+            <button onclick="document.execCommand('underline')">Subrayado</button>
+            <button onclick="document.execCommand('insertUnorderedList')">Lista</button>
+            <select onchange="document.execCommand('foreColor', false, this.value)">
+                <option value="black">Negro</option>
+                <option value="red">Rojo</option>
+                <option value="blue">Azul</option>
+                <option value="green">Verde</option>
+            </select>
+        </div>
+        <div id="editor" class="editor" contenteditable="true"></div>
+        <button class="send-button">Enviar</button>
+    </div>
+    <script>
+        let html = "";
+        html += "<div class='editor-container'>";
+        html += "<h2>Redactar Correo</h2>";
+        html += "<div class='toolbar'>";
+        html += "<button onclick=\"document.execCommand('bold')\">Negrita</button>";
+        html += "<button onclick=\"document.execCommand('italic')\">Cursiva</button>";
+        html += "<button onclick=\"document.execCommand('underline')\">Subrayado</button>";
+        html += "<button onclick=\"document.execCommand('insertUnorderedList')\">Lista</button>";
+        html += "<select onchange=\"document.execCommand('foreColor', false, this.value)\">";
+        html += "<option value='black'>Negro</option>";
+        html += "<option value='red'>Rojo</option>";
+        html += "<option value='blue'>Azul</option>";
+        html += "<option value='green'>Verde</option>";
+        html += "</select>";
+        html += "</div>";
+        html += "<div id='editor' class='editor' contenteditable='true'></div>";
+        html += "<button class='send-button'>Enviar</button>";
+        html += "</div>";
+        document.body.innerHTML = html;
+    </script>
+</body>
+</html>
